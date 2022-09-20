@@ -14,11 +14,11 @@ public class IndexService {
 	@Autowired
 	private ResultRepository resultRepo;
 
-	public void save(List<FoodSearchService> toSave) {
+	public void save(List<FoodSearchResult> toSave) {
 		resultRepo.save(toSave);
 	}
 
-	public Optional<FoodSearchService> get(String articleId) {
+	public Optional<FoodSearchResult> get(String articleId) {
 		return resultRepo.get(articleId);
 	}
 
