@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Your Food Results</title>
+		<style>
+			.article {
+				padding: 5px;
+				margin: 5px;
+				border-radius: 8px;
+				border: 1px lightgrey solid;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>BTC News (<span data-th-text="${articles.size()}"></span>)</h1>
+
+		<form method="POST" action="/results">
+
+			<div> 
+				<button type="submit">Save</button> 
+				<button type="submit" formmethod="GET" formaction="/news">Refresh</button>
+			</div>
+
+			<div data-th-each="art :${articles}" class="article">
+				<table>
+					<tr>
+						<td style="width: 30%">
+							<img data-th-src="${art.imageUrl}" alt="">
+						</td>
+						<td>
+							<a data-th-href="${art.url}">
+								<h3 data-th-text="${art.title}"></h3>
+							</a>
+
+							<p>Id: <code data-th-text="${art.id}"></code></p>
+
+							<p data-th-text="${art.body}"></p>
+
+							<p> Published On: <i data-th-text="${art.publishedOn}"></i> </p>
+							<p>
+								Save: <input type="checkbox" name="artId" data-th-value="${art.id}" >
+							</p>
+						</td>
+					</tr>
+				</table>
+			</div>
+		<form>
+		
+	</body>
+</html>
